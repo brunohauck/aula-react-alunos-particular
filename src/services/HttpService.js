@@ -20,17 +20,14 @@ const remove = id => {
   return http.delete(`/users/${id}`);
 };
 
-const removeAll = () => {
-  return http.delete(`/users`);
-};
+
 
 const HttpService = {
   getAll,
   get,
   create,
   update,
-  remove,
-  removeAll
+  remove
 };
 
 export default HttpService;

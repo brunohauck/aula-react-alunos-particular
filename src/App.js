@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import Home from './pages/home';
-import Footer from './componets/footer';
 import Login from './pages/login';
+import SampleLogin from './pages/sampleLogin';
 
 /*
 function App() {
@@ -25,7 +23,8 @@ function App() {
     </div>
   );
 }*/
-
+//  <Login />
+// <SampleLogin />
 function App() {
   var nome; 
 
@@ -34,7 +33,7 @@ function App() {
   }
   return (
     <>
-      <Login />
+     <SampleLogin />
     </>
   );
 }

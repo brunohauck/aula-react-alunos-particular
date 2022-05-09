@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/app.css';
 import HttpService from "../services/HttpService"
 import React, { useState, useEffect } from "react";
-function Login() {
+function Register() {
 
     const valoresIniciais = {
         email: "",
@@ -22,12 +22,11 @@ function Login() {
         setValores({ ...valores, [name]: value })
     }
   
-    async function loginRequest(){
+    const loginRequest = () => {
 
 
 
 
-        /*
         //Usando Fetch 
         const requestOptions = {
             method: 'POST',
@@ -39,30 +38,32 @@ function Login() {
                 console.log( data.json())
             }).catch((response) => {
                 console.log(response)
-        })*/
+        })
 
+        const requestOptions2 = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
 
+        };
+        fetch('http://localhost:3000/users', requestOptions)
+            .then(data => {
+                console.log(data.json())
+            }).catch((response) => {
+                console.log(response)
+        })
 
-
-        console.log('Start ---------<>---------')
         
         //Usando AXIOS
-
-        let retorno = await HttpService.create(valores)
-        console.log(retorno)
-        /*
-        await HttpService.create(valores)
+        HttpService.create(valores)
         .then(
             response => {
-                console.log('Promise ---------<>---------')
                 console.log(response.data)
+            
         })
         .catch( e => {
             console.log(e)
-        }) */
-        console.log('Final ---------<>---------')
-
-        //console.log(valores)
+        }) 
+        console.log(valores)
     }
 
 //Bru
@@ -91,7 +92,16 @@ function Login() {
                     value={valores.email} />
             </div>
             <div className='form-group'>
-                <label>Senha 2 </label>
+                <label>Telefone </label>
+                <input 
+                    type="text" 
+                    className='form-control'
+                    name="telefone"
+                    onChange={alteraValores} 
+                    value={valores.email} />
+            </div>
+            <div className='form-group'>
+                <label>Senha </label>
                 <input 
                     type="password" 
                     className='form-control'
@@ -108,4 +118,4 @@ function Login() {
     );
   }
   
-export default Login;
+export default Register;
