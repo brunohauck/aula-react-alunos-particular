@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import '../assets/app.css';
 import HttpService from "../services/HttpService"
 import React, { useState, useEffect } from "react";

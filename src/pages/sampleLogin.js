@@ -1,5 +1,6 @@
 //src/App.js
 import { Component } from 'react';
+import { navigate } from "react-router-dom";
 import {
   Form,
   FormFeedback,
@@ -12,6 +13,7 @@ import {
 import '../assets/login.css';
  
 class SampleLogin extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +23,7 @@ class SampleLogin extends Component {
         emailState: '',
       },
     };
+    
     this.handleChange = this.handleChange.bind(this);
   }
  
@@ -52,8 +55,11 @@ class SampleLogin extends Component {
   submitForm(e) {
     e.preventDefault();
     console.log(`Email: ${this.state.email}`);
+    window.open('http://localhost:3000/dashboard');
+
   }
   componentDidMount(){
+    
       console.log('DidMount')
   }
  
