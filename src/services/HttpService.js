@@ -12,6 +12,10 @@ const create = data => {
   return http.post("/users", data);
 };
 
+const login = data => {
+  return http.post("https://startdev-backend-brunohauck677519.codeanyapp.com/usuario/autenticate", data);
+};
+
 const update = (id, data) => {
   return http.put(`/users/${id}`, data);
 };
@@ -25,6 +29,7 @@ const remove = id => {
 const HttpService = {
   getAll,
   get,
+  login,
   create,
   update,
   remove

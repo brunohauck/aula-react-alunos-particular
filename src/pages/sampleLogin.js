@@ -1,6 +1,7 @@
 //src/App.js
 import { Component } from 'react';
-import { navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import HttpService from "../services/HttpService"
 import {
   Form,
   FormFeedback,
@@ -55,7 +56,23 @@ class SampleLogin extends Component {
   submitForm(e) {
     e.preventDefault();
     console.log(`Email: ${this.state.email}`);
-    window.open('http://localhost:3000/dashboard');
+    ///window.open('http://localhost:3000/dashboard');
+    let valores = {
+        email: this.state.email,
+        password: this.state.password
+    }
+    console.log(valores)
+    HttpService.login(valores)
+    .then(
+        response => 
+        {
+            console.log(response.data)
+            this.props.navigate('/dashboard');
+    })
+    .catch( e => {
+        console.log(e)
+    }) 
+    
 
   }
   componentDidMount(){
@@ -112,4 +129,9 @@ class SampleLogin extends Component {
   }
 }
  
-export default SampleLogin;
+function WithNavigate(props) {
+    let navigate = useNavigate();
+    return <SampleLogin {...props} navigate={navigate} />
+  }
+  
+  export default WithNavigate
